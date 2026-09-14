@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌈 Ultimate Color Therapy - 22 Colors</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+       
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+       
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow-x: hidden;
+            position: relative;
+        }
+       
+        /* 6 Enhanced floating orbs */
+        .color-orb {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+       
+        .orb-1 { width: 200px; height: 200px; background: #ff6b6b; top: 10%; left: 10%; animation-delay: 0s; }
+        .orb-2 { width: 150px; height: 150px; background: #4ecdc4; top: 60%; right: 10%; animation-delay: 2s; }
+        .orb-3 { width: 180px; height: 180px; background: #ffe66d; bottom: 20%; left: 20%; animation-delay: 4s; }
+        .orb-4 { width: 120px; height: 120px; background: #a29bfe; top: 20%; right: 20%; animation-delay: 1s; }
+        .orb-5 { width: 160px; height: 160px; background: #fd79a8; bottom: 10%; right: 30%; animation-delay: 3s; }
+        .orb-6 { width: 140px; height: 140px; background: #000; top: 40%; left: 5%; animation-delay: 5s; }
+       
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(120deg); }
+            66% { transform: translateY(10px) rotate(240deg); }
+        }
+       
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+       
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease;
+        }
+       
+        .header h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+       
+        .header p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+       
+        .color-count {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 50px;
+            padding: 12px 30px;
+            color: white;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 15px;
+            font-size: 1.1rem;
+        }
+       
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 18px;
+            margin-bottom: 40px;
+            justify-items: center;
+        }
+       
+        .color-card {
+            width: 150px;
+            height: 150px;
+            border-radius: 25px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+            font-weight: 600;
+            text-align: center;
+            padding: 12px;
+            user-select: none;
+            font-size: 0.85rem;
+        }
+       
+        .color-card:hover {
+            transform: translateY(-12px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        }
+       
+        .color-card.selected {
+            transform: scale(1.1) !important;
+            box-shadow: 0 0 0 3px rgba(255,255,255,0.5), 0 25px 60px rgba(0,0,0,0.4) !important;
+            animation: pulse 2s infinite;
+        }
+       
+        /* Dark colors get light text */
+        .color-card.black, .color-card.gray, .color-card.navy, .color-card.charcoal {
+            color: #f0f0f0;
+        }
+       
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 3px rgba(255,255,255,0.5), 0 25px 60px rgba(0,0,0,0.4); }
+            50% { box-shadow: 0 0 0 8px rgba(255,255,255,0.3), 0 30px 70px rgba(0,0,0,0.5); }
+        }
+       
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+       
+        /* ALL 22 COLORS WITH GRADIENTS */
+        .color-card.red { background: linear-gradient(135deg, #ff6b6b, #ee5a52); }
+        .color-card.blue { background: linear-gradient(135deg, #4834d4, #686de0); }
+        .color-card.green { background: linear-gradient(135deg, #00b894, #00cec9); }
+        .color-card.yellow { background: linear-gradient(135deg, #fdcb6e, #e17055); }
+        .color-card.purple { background: linear-gradient(135deg, #a29bfe, #6c5ce7); }
+        .color-card.pink { background: linear-gradient(135deg, #fd79a8, #e84393); }
+        .color-card.orange { background: linear-gradient(135deg, #ffa726, #fb8c00); }
+        .color-card.teal { background: linear-gradient(135deg, #00cec9, #55a3ff); }
+        .color-card.indigo { background: linear-gradient(135deg, #3742fa, #5b5cfa); }
+        .color-card.lime { background: linear-gradient(135deg, #a8e6cf, #88d8a3); }
+        .color-card.cyan { background: linear-gradient(135deg, #74b9ff, #0984e3); }
+        .color-card.magenta { background: linear-gradient(135deg, #fd1d1d, #f1404b); }
+        .color-card.brown { background: linear-gradient(135deg, #d1913c, #ffd194); }
+        .color-card.gray { background: linear-gradient(135deg, #95a5a6, #7f8c8d); }
+        .color-card.violet { background: linear-gradient(135deg, #8e44ad, #9b59b6); }
+        .color-card.olive { background: linear-gradient(135deg, #9ccc65, #7cb342); }
+        .color-card.maroon { background: linear-gradient(135deg, #c0392b, #e74c3c); }
+        .color-card.black { background: linear-gradient(135deg, #1a1a1a, #000000); }
+        .color-card.navy { background: linear-gradient(135deg, #0c1445, #1a237e); }
+        .color-card.gold { background: linear-gradient(135deg, #ffd700, #ffed4e); }
+        .color-card.silver { background: linear-gradient(135deg, #c0c0c0, #e5e5e5); }
+        .color-card.charcoal { background: linear-gradient(135deg, #34495e, #2c3e50); }
+       
+        .result-section {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 40px;
+            text-align: center;
+            margin-top: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            display: none;
+            animation: fadeInUp 0.8s ease;
+        }
+       
+        .result-section.show { display: block; }
+       
+        .result-color {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+       
+        .result-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #2d3436;
+        }
+       
+        .result-message {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #636e72;
+            max-width: 700px;
+            margin: 0 auto 25px;
+            font-weight: 400;
+        }
+       
+        .try-again-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+       
+        .try-again-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+        }
+       
+        @media (max-width: 768px) {
+            .color-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 15px;
+            }
+           
+            .color-card {
+                width: 120px;
+                height: 120px;
+                padding: 10px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 6 Floating orbs -->
+    <div class="color-orb orb-1"></div>
+    <div class="color-orb orb-2"></div>
+    <div class="color-orb orb-3"></div>
+    <div class="color-orb orb-4"></div>
+    <div class="color-orb orb-5"></div>
+    <div class="color-orb orb-6"></div>
+
+    <div class="container">
+        <div class="header">
+            <h1>🌈 Ultimate Color Therapy</h1>
+            <p>Click the color that speaks to your soul right now. 22 unique insights await you.</p>
+            <div class="color-count">✅ ALL 22 COLORS WORKING</div>
+        </div>
+
+        <div class="color-grid" id="colorGrid">
+            <div class="color-card red" data-color="red">
+                <span>🔴 Red</span>
+                <small>Passion</small>
+            </div>
+            <div class="color-card blue" data-color="blue">
+                <span>🔵 Blue</span>
+                <small>Peace</small>
+            </div>
+            <div class="color-card green" data-color="green">
+                <span>🟢 Green</span>
+                <small>Growth</small>
+            </div>
+            <div class="color-card yellow" data-color="yellow">
+                <span>🟡 Yellow</span>
+                <small>Joy</small>
+            </div>
+            <div class="color-card purple" data-color="purple">
+                <span>🟣 Purple</span>
+                <small>Mystery</small>
+            </div>
+            <div class="color-card pink" data-color="pink">
+                <span>🩷 Pink</span>
+                <small>Love</small>
+            </div>
+            <div class="color-card orange" data-color="orange">
+                <span>🟠 Orange</span>
+                <small>Energy</small>
+            </div>
+            <div class="color-card teal" data-color="teal">
+                <span>🩵 Teal</span>
+                <small>Balance</small>
+            </div>
+            <div class="color-card indigo" data-color="indigo">
+                <span>🟣 Indigo</span>
+                <small>Wisdom</small>
+            </div>
+            <div class="color-card lime" data-color="lime">
+                <span>🟢 Lime</span>
+                <small>Freshness</small>
+            </div>
+            <div class="color-card cyan" data-color="cyan">
+                <span>🔵 Cyan</span>
+                <small>Clarity</small>
+            </div>
+            <div class="color-card magenta" data-color="magenta">
+                <span>🟣 Magenta</span>
+                <small>Creativity</small>
+            </div>
+            <div class="color-card brown" data-color="brown">
+                <span>🤎 Brown</span>
+                <small>Stability</small>
+            </div>
+            <div class="color-card gray" data-color="gray">
+                <span>⚫ Gray</span>
+                <small>Neutrality</small>
+            </div>
+            <div class="color-card violet" data-color="violet">
+                <span>🟣 Violet</span>
+                <small>Intuition</small>
+            </div>
+            <div class="color-card olive" data-color="olive">
+                <span>🟢 Olive</span>
+                <small>Serenity</small>
+            </div>
+            <div class="color-card maroon" data-color="maroon">
+                <span>🔴 Maroon</span>
+                <small>Strength</small>
+            </div>
+            <!-- ✅ FIXED: Added missing space before class -->
+            <div class="color-card black" data-color="black">
+                <span>⚫ Black</span>
+                <small>Power</small>
+            </div>
+            <div class="color-card navy" data-color="navy">
+                <span>🔵 Navy</span>
+                <small>Depth</small>
+            </div>
+            <div class="color-card gold" data-color="gold">
+                <span>🟡 Gold</span>
+                <small>Abundance</small>
+            </div>
+            <div class="color-card silver" data-color="silver">
+                <span>⚪ Silver</span>
+                <small>Purity</small>
+            </div>
+            <div class="color-card charcoal" data-color="charcoal">
+                <span>⚫ Charcoal</span>
+                <small>Protection</small>
+            </div>
+        </div>
+
+        <div class="result-section" id="resultSection">
+            <div class="result-color" id="resultColor"></div>
+            <h2 class="result-title" id="resultTitle"></h2>
+            <p class="result-message" id="resultMessage"></p>
+            <button class="try-again-btn" onclick="resetTherapy()">🔄 Try Another Color</button>
+        </div>
+    </div>
+
+    <script>
+        const colorTherapy = {
+    red: {
+        title: "💥 You Need Action",
+        message: "Your soul craves movement and bold expression. This is a call to break free from hesitation and move toward what truly excites you. Even one small, daring step today can reignite your passion and remind you of your strength.",
+        color: "linear-gradient(135deg, #ff6b6b, #ee5a52)"
+    },
+    blue: {
+        title: "🌊 You Need Peace",
+        message: "Your inner world is asking for calm and simplicity. Disconnect from noise and let stillness refill your mind. Spend a few quiet minutes in silence, near water, or in deep breathing — it will bring your emotions back to center.",
+        color: "linear-gradient(135deg, #4834d4, #686de0)"
+    },
+    green: {
+        title: "🌱 You Need Growth",
+        message: "You’re ready to evolve, but growth often starts in small, invisible ways. Nourish your goals like a plant — with patience, consistency, and light. Every little act of self-improvement you make today will compound beautifully over time.",
+        color: "linear-gradient(135deg, #00b894, #00cec9)"
+    },
+    yellow: {
+        title: "☀️ You Need Joy",
+        message: "Your heart is craving brightness and laughter. Life doesn’t always have to be so serious — play, dance, and let yourself smile without reason. Joy is a strength, not a distraction; it recharges your soul more than anything else.",
+        color: "linear-gradient(135deg, #fdcb6e, #e17055)"
+    },
+    purple: {
+        title: "✨ You Need Mystery",
+        message: "You’ve been thinking too logically — your spirit wants to wander beyond what’s known. Dive into the unknown and let curiosity lead the way. Magic often reveals itself when you stop trying to understand everything and just explore.",
+        color: "linear-gradient(135deg, #a29bfe, #6c5ce7)"
+    },
+    pink: {
+        title: "💖 You Need Love",
+        message: "You’ve been strong for too long — now your heart needs softness. Allow yourself to receive affection, not just give it. Self-love isn’t indulgence; it’s nourishment. Treat yourself as gently as you would someone you deeply care about.",
+        color: "linear-gradient(135deg, #fd79a8, #e84393)"
+    },
+    orange: {
+        title: "🔥 You Need Energy",
+        message: "You’ve been holding back your natural fire. Movement, music, and creativity will reawaken your spark. Channel your emotions into action, and let your energy overflow into something productive and inspiring.",
+        color: "linear-gradient(135deg, #ffa726, #fb8c00)"
+    },
+    teal: {
+        title: "⚖️ You Need Balance",
+        message: "You’ve been pulled between extremes — now it’s time to restore equilibrium. Give equal attention to work and rest, giving and receiving, action and reflection. True balance isn’t perfection, it’s a peaceful rhythm that sustains you.",
+        color: "linear-gradient(135deg, #00cec9, #55a3ff)"
+    },
+    indigo: {
+        title: "🧠 You Need Wisdom",
+        message: "You’re in a phase where understanding matters more than speed. Step back, observe, and let your experiences speak their lessons. There’s clarity in silence — listen to what your intuition is trying to teach you.",
+        color: "linear-gradient(135deg, #3742fa, #5b5cfa)"
+    },
+    lime: {
+        title: "🍋 You Need Freshness",
+        message: "You may be stuck in routine — your soul longs for a breath of newness. Try something spontaneous: a walk in a new place, a change in your environment, or a fresh start on an old goal. Renewal begins with one refreshing choice.",
+        color: "linear-gradient(135deg, #a8e6cf, #88d8a3)"
+    },
+    cyan: {
+        title: "💎 You Need Clarity",
+        message: "Your thoughts may feel tangled — it’s time to simplify. Write, reflect, or meditate until what matters most becomes visible again. Clear minds attract clear opportunities, and calm hearts make the best decisions.",
+        color: "linear-gradient(135deg, #74b9ff, #0984e3)"
+    },
+    magenta: {
+        title: "🎨 You Need Creativity",
+        message: "Your imagination is restless and wants to be set free. Create without fear of judgment — whether through writing, drawing, or movement. The act of creating will heal you far more than the result itself.",
+        color: "linear-gradient(135deg, #fd1d1d, #f1404b)"
+    },
+    brown: {
+        title: "🌳 You Need Stability",
+        message: "Your spirit needs grounding — something solid to hold onto. Build stability through simple rituals: a morning routine, consistent habits, or moments of gratitude. When your roots are strong, storms can’t shake you.",
+        color: "linear-gradient(135deg, #d1913c, #ffd194)"
+    },
+    gray: {
+        title: "⚖️ You Need Neutrality",
+        message: "You’ve been caught between emotions or choices — it’s okay to pause and not pick a side. Detach with compassion and see things as they are, not as you wish them to be. Neutrality is peace in disguise.",
+        color: "linear-gradient(135deg, #95a5a6, #7f8c8d)"
+    },
+    violet: {
+        title: "🔮 You Need Intuition",
+        message: "Logic has served you well, but now it’s time to trust your inner voice. Your instincts are whispering the truth you already know. Listen carefully — the quietest signals often guide the biggest breakthroughs.",
+        color: "linear-gradient(135deg, #8e44ad, #9b59b6)"
+    },
+    olive: {
+        title: "🕊️ You Need Serenity",
+        message: "You’ve faced enough noise and tension — peace is your medicine now. Step away from the chaos, even for a few minutes, and let nature or stillness recharge you. Serenity is not the absence of challenge, but mastery over your response.",
+        color: "linear-gradient(135deg, #9ccc65, #7cb342)"
+    },
+    maroon: {
+        title: "🛡️ You Need Strength",
+        message: "You’ve given too much of yourself lately — now it’s time to stand firm. Strength isn’t just power, it’s resolve. Protect your energy and remember that saying ‘no’ is an act of self-respect, not selfishness.",
+        color: "linear-gradient(135deg, #c0392b, #e74c3c)"
+    },
+    black: {
+        title: "⚫ You Need Power",
+        message: "You’ve been underestimating your influence — it’s time to reclaim your authority. Stand tall, speak clearly, and make choices that serve your true purpose. Power is not control over others, but command over yourself.",
+        color: "linear-gradient(135deg, #1a1a1a, #000000)"
+    },
+    navy: {
+        title: "🌌 You Need Depth",
+        message: "Surface-level living no longer satisfies you. Dive deeper into your emotions, thoughts, or passions. Real fulfillment lies in exploring what lies beneath the obvious, where your true wisdom and purpose dwell.",
+        color: "linear-gradient(135deg, #0c1445, #1a237e)"
+    },
+    gold: {
+        title: "👑 You Need Abundance",
+        message: "You are worthy of more — love, success, and joy. Stop acting small or unworthy; abundance grows where gratitude lives. Recognize your value, and the universe will mirror it back to you in surprising ways.",
+        color: "linear-gradient(135deg, #ffd700, #ffed4e)"
+    },
+    silver: {
+        title: "✨ You Need Purity",
+        message: "Your energy feels cluttered — it’s time to cleanse it. Release what no longer serves you: old grudges, toxic people, and mental clutter. Purity isn’t perfection — it’s alignment with your true, unburdened self.",
+        color: "linear-gradient(135deg, #c0c0c0, #e5e5e5)"
+    },
+    charcoal: {
+        title: "🛡️ You Need Protection",
+        message: "You’ve been too open, and your energy needs shielding. Not everyone deserves full access to your emotions or time. Protect your peace fiercely — boundaries are your armor, not your walls.",
+        color: "linear-gradient(135deg, #34495e, #2c3e50)"
+    }
+};
+
+
+        const colorCards = document.querySelectorAll('.color-card');
+        const resultSection = document.getElementById('resultSection');
+        const colorGrid = document.getElementById('colorGrid');
+
+        colorCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const color = this.dataset.color;
+               
+                colorCards.forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+               
+                setTimeout(() => {
+                    showResult(color);
+                }, 600);
+            });
+        });
+
+        function showResult(color) {
+            const result = colorTherapy[color];
+            const resultColor = document.getElementById('resultColor');
+            const resultTitle = document.getElementById('resultTitle');
+            const resultMessage = document.getElementById('resultMessage');
+           
+            resultColor.style.background = result.color;
+            resultTitle.textContent = result.title;
+            resultMessage.textContent = result.message;
+           
+            colorGrid.style.display = 'none';
+            resultSection.classList.add('show');
+            resultSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetTherapy() {
+            colorCards.forEach(c => c.classList.remove('selected'));
+            colorGrid.style.display = 'grid';
+            resultSection.classList.remove('show');
+            document.querySelector('.header').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        colorCards.forEach(card => {
+            card.addEventListener('mousedown', () => card.style.transform = 'scale(0.95)');
+            card.addEventListener('mouseup', () => card.style.transform = '');
+        });
+    </script>
+</body>
+</html>
